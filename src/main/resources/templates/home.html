@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+</head>
+<body>
+
+
+<div align="center">
+    <h1>Witaj!</h1>
+    <h3>Zamów jedzenie z dostawą do domu</h3>
+</div>
+
+<div>
+
+    <form action="/" method="get" th:object="${food}">
+
+        <p th:each="item : ${food}"
+           th:text="${item}">żarcie</p>
+
+
+    </form>
+
+</div>
+
+
+
+
+</body>
+</html>

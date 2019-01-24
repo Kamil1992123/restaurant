@@ -4,6 +4,7 @@ package pl.restaurant.item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import pl.restaurant.order.Order;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = "id")
 public class Item {
 
 
