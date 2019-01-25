@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = "id")
+//@ToString(exclude = "id")
 public class Item {
 
 
@@ -29,5 +29,10 @@ public class Item {
     private String fullDescription;
 
 
+
+    @Override
+    public String toString() {
+        return name +  "cena: " + price + " Opis: " + quickDescription + " - " + fullDescription ;
+    }
 }
 

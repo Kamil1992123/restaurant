@@ -31,18 +31,13 @@ public class HomeController {
 
         List <Item> itemsList = new ArrayList<>();
         Iterable <Item> itemIterable = new ArrayList<>();
-
-
         itemIterable = itemRepository.findAll();
 
         for (Item item : itemIterable){
-
             itemsList.add(item);
         }
 
         model.addAttribute("food",itemsList);
-
-
         return "home";
 
     }
