@@ -27,7 +27,7 @@ public class Item {
     private String quickDescription;
     @Column(length = 1500)
     private String fullDescription;
-
+    private String url;
 
 
     @Override

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../static/icon/pizza/flaticon.css" th:href="@{/icon/pizza/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}" >
+    <link rel="stylesheet" type="text/css" th:href="@{/icon/pizza/flaticon.css}">
     <title>Zamów jedzonko!</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 
 <div  align="center" class="jumbotron home-jumbo container text-white">
     <h1 class="display-5">Witaj!</h1>
-    <h3 strong>Zamów jedzenie z dostawą do domu</h3>
+    <h3 >Zamów jedzenie z dostawą do domu</h3>
 </div>
 <br>
 <div class="container">
@@ -23,7 +23,7 @@
         <div class="media col-6 offset-1" th:each="item: ${food}">
             <i class="flaticon-pizza"></i>
             <div class="media-body">
-                <h5><a href="/" th:text="|${item.name}(${item.price}zł)|"></a></h5>
+                <h5><a th:href="@{|/food/${#strings.replace(item.name,' ','-')}|}" th:text="|${item.name}(${item.price}zł)|"></a></h5>
                 <p th:text="${item.quickDescription}"></p>
             </div>
         </div>
