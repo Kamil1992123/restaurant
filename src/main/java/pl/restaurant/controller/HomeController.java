@@ -1,12 +1,12 @@
-package pl.restaurant;
+package pl.restaurant.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.restaurant.item.Item;
-import pl.restaurant.item.ItemRepository;
+import pl.restaurant.model.item.Item;
+import pl.restaurant.model.item.ItemRepository;
 
 import java.util.ArrayList;
 import java.util.List;

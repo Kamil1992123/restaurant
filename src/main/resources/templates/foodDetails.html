@@ -19,6 +19,7 @@
             <img  src="../static/img/homee.jpg" th:src="@{${dinner.url}}" class="img-fluid" alt="obraz"/>
             <h1  th:text="${dinner.name}"></h1>
             <h4 th:text="${dinner.fullDescription}"></h4>
+            <a class="btn btn-primary" th:href="@{/order/add(id=${dinner.id})}" role="button">Dodaj do zamówienia</a>
         </div>
     </div>
 </div>

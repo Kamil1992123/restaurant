@@ -1,4 +1,4 @@
-package pl.restaurant.item;
+package pl.restaurant.model.item;
 
 
 import org.springframework.data.repository.CrudRepository;

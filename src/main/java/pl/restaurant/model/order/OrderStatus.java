@@ -1,4 +1,4 @@
-package pl.restaurant.order;
+package pl.restaurant.model.order;
 
 public enum OrderStatus {
 

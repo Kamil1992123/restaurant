@@ -1,10 +1,10 @@
-package pl.restaurant.order;
+package pl.restaurant.model.order;
 
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.restaurant.item.Item;
+import pl.restaurant.model.item.Item;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -32,8 +32,6 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id") )
     private List<Item> itemList = new ArrayList<>();
-
-
 
 
 

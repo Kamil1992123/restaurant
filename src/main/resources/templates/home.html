@@ -15,6 +15,7 @@
 <div  align="center" class="jumbotron home-jumbo container text-white">
     <h1 class="display-5">Witaj!</h1>
     <h3 >Zamów jedzenie z dostawą do domu</h3>
+    <a th:href="@{/order/}" class="btn btn-primary" role="button" >Sprawdź swoje zamówienie</a>
 </div>
 <br>
 <div class="container">
@@ -24,7 +25,8 @@
             <i class="flaticon-pizza"></i>
             <div class="media-body">
                 <h5><a th:href="@{|/food/${#strings.replace(item.name,' ','-')}|}" th:text="|${item.name}(${item.price}zł)|"></a></h5>
-                <p th:text="${item.quickDescription}"></p>
+                <p th:text="${item.quickDescription}">Opis</p>
+                <a class="btn btn-primary" th:href="@{/order/add(id=${item.id})}" role="button">Dodaj do zamówienia</a>
             </div>
         </div>
 

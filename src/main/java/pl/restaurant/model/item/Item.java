@@ -1,15 +1,11 @@
-package pl.restaurant.item;
+package pl.restaurant.model.item;
 
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
-import pl.restaurant.order.Order;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor

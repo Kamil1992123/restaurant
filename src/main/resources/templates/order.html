@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Zamówienie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" >
+</head>
+<body>
+
+
+<div class="container">
+
+        <div align="center" class="jumbotron home-jumbo container text-white">
+            <h1 class="display-5">Twoje zamówienie</h1>
+            <a th:href="@{/}">Strona główna</a>
+        </div>
+
+    <div class="col-6 offset-1" th:if="${!order.itemList.isEmpty()}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Cena</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+            <tr th:each="item, idx: ${order.itemList}">
+                <th scope="row" th:text="${idx.index+1}">1</th>
+                <td th:text="${item.name}"></td>
+                <td th:text="|${item.price}zł|"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <h5 th:text="|Do zapłaty: ${#numbers.formatDecimal(sum,1,2,'COMMA')}zł|"></h5>
+        </div>
+        <form action="#" th:action="@{/order/info}" method="post">
+            <div class="form-group">
+                <label for="addressInput">Adres</label>
+                <input type="text" class="form-control" id="addressInput" name="address" placeholder="ul. -podaj ulicę-, kod pocztowy: 00-000 miasto">
+            </div>
+            <div class="form-group">
+                <label for="telephoneInput">Numer telefonu</label>
+                <input type="text" class="form-control" id="telephoneInput" name="telephone" placeholder="000-000-000">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary">Zamów</button>
+            </div>
+        </form>
+
+    </div>
+    <div th:if="${order.itemList.isEmpty()}" class="text-center">
+        <h2>Twoje zamówienie jest puste</h2>
+        <a href="#" th:href="@{/}">Dodaj coś do zamówienia</a>
+    </div>
+</div>
+
+
+</body>
+</html>

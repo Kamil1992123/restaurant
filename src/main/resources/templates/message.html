@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Komunikat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" >
+
+</head>
+<body>
+
+
+<body>
+<div class="container">
+    <div class="jumbotron home-jumbo">
+        <div class="container text-center text-white jumbo-container">
+            <div th:if="${message}" th:remove="tag">
+                <h1 class="display-3" th:text="${message.title}">Sukces</h1>
+                <p th:text="${message.content}">Wszystko poszło zgodnie z planem. Hurra!</p>
+            </div>
+            <div th:if="!${message}" th:remove="tag">
+                <h1 class="display-3">Sukces</h1>
+                <p th:text="${message}">Wszystko poszło zgodnie z planem. Hurra!</p>
+            </div>
+            <a th:href="@{/}">Powrót do strony głównej</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
