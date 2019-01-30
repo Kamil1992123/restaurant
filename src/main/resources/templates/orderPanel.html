@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" >
+    <title>Panel zamówień</title>
+</head>
+<body>
+
+
+
+<div align="center" class="jumbotron home-jumbo container text-white">
+    <h1>Zamówienia:</h1>
+</div>
+
+
+<div class="container" align="center">
+    <a class="btn btn-primary" th:href="@{/panel/order(status=${T(pl.restaurant.model.order.OrderStatus).ORDERED.name()})}" role="button">Zamówione</a>
+    <a class="btn btn-primary" th:href="@{/panel/order(status=${T(pl.restaurant.model.order.OrderStatus).IN_PROGRESS.name()})}" role="button">Realizowane</a>
+    <a class="btn btn-primary" th:href="@{/panel/order(status=${T(pl.restaurant.model.order.OrderStatus).READY.name()})}" role="button">Gotowe</a>
+    <br>
+</div>
+
+
+<div class="container" th:if="${!orders.isEmpty()}">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adres</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edycja</th>
+        </tr>
+        </thead>
+        <tbody th:each="pan, idx : ${orders}">
+        <tr>
+            <th scope="row" th:text="${idx.index+1}"></th>
+            <td th:text="${pan.address}"></td>
+            <td th:text="${pan.telephoneNumber}"></td>
+
+            <th:block th:switch="${pan.orderStatus}">
+                <td th:case="${T(pl.restaurant.model.order.OrderStatus).ORDERED}">Zamówione</td>
+                <td th:case="${T(pl.restaurant.model.order.OrderStatus).IN_PROGRESS}">Realizowane</td>
+                <td th:case="${T(pl.restaurant.model.order.OrderStatus).READY}">Gotowe</td>
+            </th:block>
+            <td class="btn btn-primary">Edytuj</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <div th:if="${orders.isEmpty()}">
+        <h1>Brak zamówień</h1>
+    </div>
+
+</div>
+
+
+</body>
+</html>
