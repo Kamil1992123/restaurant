@@ -15,6 +15,8 @@
         <div align="center" class="jumbotron home-jumbo container text-white">
             <h1 class="display-5">Twoje zamówienie</h1>
             <a th:href="@{/}">Strona główna</a>
+            <br>
+            <a th:href="@{/panel/order/}">Lista zamówień</a>
         </div>
 
     <div class="col-6 offset-1" th:if="${!order.itemList.isEmpty()}">
@@ -37,14 +39,14 @@
         <div class="text-right">
             <h5 th:text="|Do zapłaty: ${#numbers.formatDecimal(sum,1,2,'COMMA')}zł|"></h5>
         </div>
-        <form action="#" th:action="@{/order/info}" method="post">
+        <form action="#" th:action="@{/order/info/}" method="post">
             <div class="form-group">
                 <label for="addressInput">Adres</label>
-                <input type="text" class="form-control" id="addressInput" name="address" placeholder="ul. -podaj ulicę-, kod pocztowy: 00-000 miasto">
+                <input type="text" class="form-control" id="addressInput" name="address" placeholder="ulica,kod pocztowy,miasto">
             </div>
             <div class="form-group">
                 <label for="telephoneInput">Numer telefonu</label>
-                <input type="text" class="form-control" id="telephoneInput" name="telephone" placeholder="000-000-000">
+                <input type="text" class="form-control" id="telephoneInput" name="telephone" placeholder="777-777-777">
             </div>
             <div class="text-center">
                 <button class="btn btn-primary">Zamów</button>

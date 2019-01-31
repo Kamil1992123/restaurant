@@ -8,4 +8,17 @@ public enum OrderStatus {
     READY
     ;
 
+
+    public static OrderStatus nextStatus(OrderStatus status){
+
+        if (status == ORDERED){
+            return IN_PROGRESS;
+        }
+        else if (status == IN_PROGRESS){
+            return READY;
+        }
+        else
+            throw new IllegalArgumentException("Nie ma takiego statusu");
+    }
+
 }

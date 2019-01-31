@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" >
+    <title th:text="|Zamówienie nr ${order.id}|"></title>
+</head>
+<body>
+
+
+<div class="container home-jumbo jumbotron text-white text-center">
+    <h3 th:text="|Zamówienie nr: ${order.id}"|></h3>
+    <h3 th:text="|Status zamówienia:|"></h3>
+    <th:block th:switch="${order.orderStatus}">
+        <h3 th:case="${T(pl.restaurant.model.order.OrderStatus).ORDERED}">Zamówione</h3>
+        <h3 th:case="${T(pl.restaurant.model.order.OrderStatus).IN_PROGRESS}">Realizowane</h3>
+        <h3 th:case="${T(pl.restaurant.model.order.OrderStatus).READY}">Gotowe</h3>
+    </th:block>
+    <h3>
+    <a th:href="@{/order/}">Lista zamówień</a>
+    </h3>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="items, idx : ${order.itemList}">
+            <th scope="row" th:text="${idx.index+1}"></th>
+            <td th:text="${items.name}"></td>
+            <td th:text="${items.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="text-right container">
+    <h3 th:text="|Do zapłaty: ${#numbers.formatDecimal(sum,1,2,'COMMA')}zł|"></h3>
+</div>
+
+<div class="container text-center" th:if="${order.orderStatus != T(pl.restaurant.model.order.OrderStatus).READY}">
+    <form th:action="@{|/panel/order/${order.id}|}" method="post">
+        <button class="btn btn-primary" th:if="${order.orderStatus == T(pl.restaurant.model.order.OrderStatus).ORDERED}">Realizuj</button>
+        <button class="btn btn-success" th:if="${order.orderStatus == T(pl.restaurant.model.order.OrderStatus).IN_PROGRESS}">Zakończ</button>
+    </form>
+</div>
+
+<div class="container text-center" th:if="${order.itemList.isEmpty()}">
+    <h2>Zamówienie jest puste</h2>
+    <a th:href="@{/order/}">Powrót</a>
+</div>
+
+</body>
+</html>

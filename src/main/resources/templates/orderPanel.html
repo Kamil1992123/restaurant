@@ -32,12 +32,12 @@
             <th scope="col">Adres</th>
             <th scope="col">Telefon</th>
             <th scope="col">Status</th>
-            <th scope="col">Edycja</th>
+            <th scope="col">Szczegóły</th>
         </tr>
         </thead>
-        <tbody th:each="pan, idx : ${orders}">
-        <tr>
-            <th scope="row" th:text="${idx.index+1}"></th>
+        <tbody>
+        <tr th:each="pan : ${orders}">
+            <th scope="row" th:text="${pan.id}"></th>
             <td th:text="${pan.address}"></td>
             <td th:text="${pan.telephoneNumber}"></td>
 
@@ -46,7 +46,9 @@
                 <td th:case="${T(pl.restaurant.model.order.OrderStatus).IN_PROGRESS}">Realizowane</td>
                 <td th:case="${T(pl.restaurant.model.order.OrderStatus).READY}">Gotowe</td>
             </th:block>
-            <td class="btn btn-primary">Edytuj</td>
+            <td>
+            <a class="btn btn-primary" th:href="@{|/panel/order/${pan.id}|}" role="button">Pokaż</a>
+            </td>
         </tr>
         </tbody>
     </table>

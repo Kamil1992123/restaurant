@@ -26,6 +26,7 @@ public class OrderController {
     private ItemRepository itemRepository;
     private OrderRepository orderRepository;
 
+    @Autowired
     public OrderController(ClientOrder clientOrder, ItemRepository itemRepository, OrderRepository orderRepository) {
         this.clientOrder = clientOrder;
         this.itemRepository = itemRepository;
@@ -62,7 +63,7 @@ public class OrderController {
     }
 
 
-    @PostMapping("/order/info")
+    @PostMapping("/order/info/")
     public String proceedOrder(@RequestParam String address, @RequestParam String telephone, Model model){
 
         Order order = clientOrder.getOrder();
@@ -74,6 +75,4 @@ public class OrderController {
         return "message";
 
     }
-
-
 }
